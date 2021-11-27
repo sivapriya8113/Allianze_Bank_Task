@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import datetime
+import os
+import django_heroku
+
 import dj_database_url
 from pathlib import Path
 
@@ -27,6 +30,7 @@ SECRET_KEY = 'django-insecure-y5c92o2*esg-c@6t4!e52birg)0w7_8@r8-i#q^%kj11$qx8uk
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -133,6 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 
@@ -201,6 +206,8 @@ JWT_AUTH = {
 
 }
 
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
